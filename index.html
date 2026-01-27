@@ -31,11 +31,15 @@
 
   <!-- Hero -->
   <section class="min-h-screen flex items-center justify-center text-center px-6">
+    
     <div>
+        
       <p class="text-cyan-400 tracking-wide">Hi, I'm</p>
-      <h1 id="typing" class="text-5xl md:text-7xl font-extrabold mt-2"><span id="typing"></span></h1>
+      <h1 id="typing" class="text-5xl md:text-7xl font-extrabold mt-2"><span id="typing"></span><span class="cursor">|</span>
+</h1>
       <h2 class="text-xl md:text-2xl mt-4 text-slate-400">D365 Developer | Power Platform Consultant</h2>
       <p class="max-w-2xl mx-auto mt-6 text-slate-300">I build scalable business solutions using Microsoft Dynamics 365, Power Platform, and modern web technologies.</p>
+       <p class="text-cyan-400 tracking-wide">Microsoft Certified Professional</p>
       <div class="mt-8 flex justify-center gap-4">
         <a href="#projects" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-xl">View Work</a>
         <a href="#contact" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-xl hover:bg-cyan-400 hover:text-black">Contact</a>
@@ -81,17 +85,17 @@
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-3xl font-bold text-center">Projects</h2>
       <div class="grid md:grid-cols-3 gap-8 mt-12">
-        <div class="bg-slate-800 p-6 rounded-2xl">
-          <h3 class="font-semibold">CRM Automation System</h3>
-          <p class="text-sm text-slate-400 mt-2">Automated workflows using Power Automate and Azure Functions.</p>
+        <div class="bg-slate-800 p-6  rounded-2xl">
+          <h3 class="font-semibold text-center">Job Application Process CRM & MVC Portal</h3>
+          <p class="text-sm text-slate-400 text-left mt-2">Enhanced the CRM system through extensive customization and extension. Using Power Automate and JotForm to get information from users. Developed a custom web portal using ASP.NET MVC, seamlessly integrating it with CRM for comprehensive management of applicants' data and document management using Graph API.</p>
         </div>
         <div class="bg-slate-800 p-6 rounded-2xl">
-          <h3 class="font-semibold">Sales Analytics Dashboard</h3>
-          <p class="text-sm text-slate-400 mt-2">Power BI dashboards with real-time CRM insights.</p>
+          <h3 class="font-semibold text-center">Customer Service CRM</h3>
+          <p class="text-sm text-slate-400 text-left mt-2">Customized CRM with advanced workflows, web resources, custom actions, plugins, and Web APIs to enhance functionality. Implemented document management in SharePoint using Power Automate, plugins, Graph API, and Custom Canvas App. Automated SharePoint folder creation and document management.</p>
         </div>
         <div class="bg-slate-800 p-6 rounded-2xl">
-          <h3 class="font-semibold">Custom Model-driven Apps</h3>
-          <p class="text-sm text-slate-400 mt-2">Enterprise apps using Power Apps and Dataverse.</p>
+          <h3 class="font-semibold">Reliant CRM & DocuSign Automation</h3>
+          <p class="text-sm text-slate-400 mt-2">Enhanced the Reliant CRM system through extensive customization with workflows, web resources, and plugins. Built and integrated Power Automate flows with DocuSign to automate document signing processes. Streamlined approval workflows with secure, seamless digital signatures within CRM.</p>
         </div>
       </div>
     </div>
@@ -103,30 +107,53 @@
       <h2 class="text-3xl font-bold">Contact Me</h2>
       <p class="text-slate-400 mt-4">Let’s build something great together</p>
       <div class="mt-8 flex justify-center gap-6">
-        <a href="mailto:wasimraja98980@gmail.com" class="px-6 py-3 bg-cyan-500 rounded-xl text-black font-semibold">Email</a>
-        <a href="https://www.linkedin.com/in/raja-waseem-akhtar-microsoft-dynamics-crm-developer/" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-xl">LinkedIn</a>
-        <a href="https://github.com/WaseemCRMDev" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-xl">GitHub</a>
+        <a href="mailto:youremail@email.com" class="px-6 py-3 bg-cyan-500 rounded-xl text-black font-semibold">Email</a>
+        <a href="#" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-xl">LinkedIn</a>
+        <a href="#" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-xl">GitHub</a>
       </div>
     </div>
   </section>
 
   <footer class="text-center py-6 text-slate-500 border-t border-slate-800">© 2026 Waseem Akhtar. All rights reserved.</footer>
 
-  <script>
-    const text = "Waseem Akhtar";
-    let i = 0;
-    const speed = 500;
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const texts = ["Waseem Akhtar", "MS Dynamics CRM Developer"];
+    let textIndex = 0;
+    let charIndex = 0;
+
+    const speed = 120;
+    const eraseSpeed = 80;
+    const delayBetweenTexts = 1500;
+
+    const typingElement = document.getElementById("typing");
+    if (!typingElement) return;
+
     function typeEffect() {
-      if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
+      if (charIndex < texts[textIndex].length) {
+        typingElement.textContent += texts[textIndex].charAt(charIndex);
+        charIndex++;
         setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(eraseEffect, delayBetweenTexts);
       }
     }
-    //vmE2xhQ.turBh@t
-    window.onload = typeEffect;
-  </script>
+
+    function eraseEffect() {
+      if (typingElement.textContent.length > 0) {
+        typingElement.textContent = typingElement.textContent.slice(0, -1);
+        setTimeout(eraseEffect, eraseSpeed);
+      } else {
+        textIndex = (textIndex + 1) % texts.length;
+        charIndex = 0;
+        setTimeout(typeEffect, 300);
+      }
+    }
+
+    typeEffect();
+  });
+</script>
+
+
 </body>
 </html>
-
-
